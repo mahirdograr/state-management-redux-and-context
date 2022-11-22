@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 const CounterOperation = () => {
+  const [number, setNumber] = useState(0);
   const dispatch = useDispatch();
   const increase = () => {
-    dispatch({ type: "INCREASE" });
+    dispatch({ type: "INCREASE", payload: Number(number) });
   };
 
   // useSelect => mevcut state çeker ve o componentin STORE a yani reduxa abone olmasını sağlar
@@ -13,10 +14,19 @@ const CounterOperation = () => {
   // diyorki bu sayıyı yükselttik daha sonra counterheader da diyor ki bu sayı yükseldi bunu güncelleyeyim
 
   const decrease = () => {
-    dispatch({ type: "DECREASE" });
+    dispatch({ type: "DECREASE", payload: Number(number) });
   };
   return (
     <div>
+      <div>
+        <label>Number: </label>
+        <input
+          type="text"
+          value={number}
+          onChange={(e) => setNumber(e.target.value)}
+        ></input>
+      </div>
+
       <button onClick={() => increase()}>+</button>
       <br />
       <br />
