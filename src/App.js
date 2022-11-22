@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import CounterHeader from "./reduxSample/CounterHeader";
+import CounterOperation from "./reduxSample/CounterOperation";
+import { counterReducer } from "./store/reducers/counter.reducer";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
 
-function App() {
+// import { FavoriteProvider } from "./contextsample/FavoriteProductContext";
+// import ProductHeader from "./contextsample/ProductHeader";
+// import ProductPage from "./contextsample/ProductPage";
+// bu stateler eklendiği taktirde state üzerinde veri kullanma çalışacaktır
+// import CategoryPage from "./stateSample/CategoryPage";
+// import SiteHeader from "./stateSample/SiteHeader";
+
+var counterStore = createStore(counterReducer);
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Provider store={counterStore}>
+        <CounterHeader />
+        <CounterOperation />
+      </Provider>
+
+      {/* <FavoriteProvider>
+        <ProductHeader />
+        <ProductPage />
+      </FavoriteProvider> */}
+    </>
   );
-}
+};
 
 export default App;
