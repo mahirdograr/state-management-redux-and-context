@@ -6,6 +6,8 @@ export const counterReducer = (state, action) => {
     return state + action.payload;
   } else if (action.type == "DECREASE") {
     return state - action.payload;
+  } else if (action.type == "EMPTY") {
+    return 0;
   } else {
     return state;
   }
