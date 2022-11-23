@@ -38,6 +38,7 @@ const CounterOperation = () => {
       <button onClick={() => decrease()}> - </button>
       <br />
       <br />
+      <br />
       <button onClick={() => emptyy()}>Empty</button>
     </div>
   );
